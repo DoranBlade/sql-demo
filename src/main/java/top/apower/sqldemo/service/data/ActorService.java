@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ActorService {
 
-    List<ActorDO> queryPage(int page, int size);
+    List<ActorDO> queryAll();
 
 }

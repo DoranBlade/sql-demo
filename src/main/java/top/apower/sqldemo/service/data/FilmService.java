@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface FilmService {
 
-    List<FilmDO> queryPage(int start, int offset);
+    List<FilmDO> queryAll();
 }

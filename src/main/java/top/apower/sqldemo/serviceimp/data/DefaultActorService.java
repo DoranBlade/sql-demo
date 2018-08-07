@@ -1,6 +1,5 @@
 package top.apower.sqldemo.serviceimp.data;
 
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -23,8 +22,7 @@ public class DefaultActorService implements ActorService {
     }
 
     @Override
-    public List<ActorDO> queryPage(int page, int size) {
-        PageHelper.startPage(page, size);
+    public List<ActorDO> queryAll() {
         return actorDOMapper.selectByExample(new ActorDOExample());
     }
 }

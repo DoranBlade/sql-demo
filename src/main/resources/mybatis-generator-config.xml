@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:\Users\eric\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar" />
+
+    <context id="default" targetRuntime="Mybatis3">
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
+        <commentGenerator>
+            <!--去除时间戳注释-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.88.132:3306/demo?useSSL=false"
+                        userId="eric"
+                        password="*mysql123">
+        </jdbcConnection>
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--本服务实体类-->
+        <javaModelGenerator targetPackage="top.apower.sqldemo.model.data" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper.data"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="top.apower.sqldemo.mapper.data" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="demo" domainObjectName="DemoDO">
+            <generatedKey column="id" sqlStatement="SELECT replace(uuid(), '-', '')" />
+        </table>
+        <table tableName="film" domainObjectName="FilmDO">
+            <generatedKey column="id" sqlStatement="SELECT replace(uuid(), '-', '')" />
+        </table>
+        <table tableName="actor" domainObjectName="ActorDO">
+            <generatedKey column="id" sqlStatement="SELECT replace(uuid(), '-', '')" />
+        </table>
+        <table tableName="actor_film" domainObjectName="ActorFilmDO">
+            <generatedKey column="id" sqlStatement="SELECT replace(uuid(), '-', '')" />
+        </table>
+
+    </context>
+</generatorConfiguration>

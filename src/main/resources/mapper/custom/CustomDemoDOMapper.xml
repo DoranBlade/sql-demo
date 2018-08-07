@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.apower.sqldemo.mapper.custom.CustomDemoDOMapper">
+
+  <insert id="insertList" parameterType="java.util.ArrayList">
+    insert into demo(id, first_name, last_name, age) values
+      <foreach collection="param" item="item" separator=",">
+        (replace(uuid(), '-', ''), #{item.firstName}, #{item.lastName}, #{item.age})
+      </foreach>
+  </insert>
+
+</mapper>
